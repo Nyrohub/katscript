@@ -82,13 +82,13 @@ function killAllPlayers()
 end
 
 -- GUI setup
-local gui = Instance.new("ScreenGui")
-local mainFrame = Instance.new("Frame")
-local aimbotButton = Instance.new("TextButton")
-local espButton = Instance.new("TextButton")
-local wallshotButton = Instance.new("TextButton")
-local infiniteYieldButton = Instance.new("TextButton")
-local killAllButton = Instance.new("TextButton")
+local gui = Instance.new("Nyrohub")
+local mainFrame = Instance.new("combat")
+local aimbotButton = Instance.new("aimbot")
+local espButton = Instance.new("esp")
+local wallshotButton = Instance.new("wallshoting")
+local infiniteYieldButton = Instance.new("infinite yeild")
+local killAllButton = Instance.new("killall")
 
 gui.Parent = game.CoreGui
 
