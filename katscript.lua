@@ -1,11 +1,19 @@
+-- Required libraries
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local GuiService = game:GetService("GuiService")
+local CoreGui = game:GetService("CoreGui")
+
 -- Function to aim the player at the nearest enemy
 function aimbot()
-    local player = game.Players.LocalPlayer
+    local player = Players.LocalPlayer
     local nearestEnemy = nil
     local nearestDistance = math.huge
 
-    for _, enemyPlayer in pairs(game.Players:GetPlayers()) do
-        if enemyPlayer ~= game.Players.LocalPlayer then
+    for _, enemyPlayer in pairs(Players:GetPlayers()) do
+        if enemyPlayer ~= Players.LocalPlayer then
             local distance = (enemyPlayer.Character.Head.Position - player.Character.Head.Position).Magnitude
             if distance < nearestDistance then
                 nearestEnemy = enemyPlayer
@@ -24,8 +32,8 @@ end
 
 -- Function to enable ESP (enemy spotting)
 function enableESP()
-    for _, player in pairs(game.Players:GetPlayers()) do
-        if player ~= game.Players.LocalPlayer then
+    for _, player in pairs(Players:GetPlayers()) do
+        if player ~= Players.LocalPlayer then
             player.Character.Head.Transparency = 0.5
         end
     end
@@ -33,8 +41,8 @@ end
 
 -- Function to disable ESP
 function disableESP()
-    for _, player in pairs(game.Players:GetPlayers()) do
-        if player ~= game.Players.LocalPlayer then
+    for _, player in pairs(Players:GetPlayers()) do
+        if player ~= Players.LocalPlayer then
             player.Character.Head.Transparency = 1
         end
     end
@@ -42,7 +50,7 @@ end
 
 -- Function to perform a wallshot (shoot through walls)
 function wallshot()
-    local player = game.Players.LocalPlayer
+    local player = Players.LocalPlayer
     local rayOrigin = player.Character.Head.Position
     local rayDirection = player.Character.Head.CFrame.LookVector
 
@@ -62,20 +70,20 @@ end
 
 -- Function to enable infinite yield
 function enableInfiniteYield()
-    game.Players.LocalPlayer.Character.Humanoid.AutoRotate = false
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 0
+    Players.LocalPlayer.Character.Humanoid.AutoRotate = false
+    Players.LocalPlayer.Character.Humanoid.WalkSpeed = 0
 end
 
 -- Function to disable infinite yield
 function disableInfiniteYield()
-    game.Players.LocalPlayer.Character.Humanoid.AutoRotate = true
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    Players.LocalPlayer.Character.Humanoid.AutoRotate = true
+    Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
 end
 
 -- Function to kill all players (except the user)
 function killAllPlayers()
-    for _, player in pairs(game.Players:GetPlayers()) do
-        if player ~= game.Players.LocalPlayer then
+    for _, player in pairs(Players:GetPlayers()) do
+        if player ~= Players.LocalPlayer then
             player.Character.Humanoid:TakeDamage(100)
         end
     end
@@ -83,14 +91,14 @@ end
 
 -- GUI setup
 local gui = Instance.new("Nyrohub")
-local mainFrame = Instance.new("combat")
+local mainFrame = Instance.new("main")
 local aimbotButton = Instance.new("aimbot")
 local espButton = Instance.new("esp")
-local wallshotButton = Instance.new("wallshoting")
-local infiniteYieldButton = Instance.new("infinite yeild")
+local wallshotButton = Instance.new("wallshots")
+local infiniteYieldButton = Instance.new("inf yield")
 local killAllButton = Instance.new("killall")
 
-gui.Parent = game.CoreGui
+gui.Parent = CoreGui
 
 mainFrame.Parent = gui
 mainFrame.BackgroundColor3 = Color3.new(0, 0, 0)
